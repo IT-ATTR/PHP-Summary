@@ -19,19 +19,19 @@
 
 ### Memcache的安装
 
-**安装的命令： yum -y install memcached telnet telnet-server**
+`yum -y install memcached telnet telnet-server`
 
 ### 启动Memcache的服务器
 
 * 需要启动memcached和telnet的服务器,才能正常使用Memcached
 
-**Memcached服务器指令:service memcached [start|status|stop|restart]**
+`service memcached [start|status|stop|restart]`
 
-**Telnet服务器指令:service xinetd [start|status|stop|restart]**
+`Telnet服务器指令:service xinetd [start|status|stop|restart]`
 
 ### 使用telnet连接Memcache
 
-**命令格式: telnet [memcache的服务器地址] [端口]**
+`telnet [memcache的服务器地址] [端口]`
 
 ### Memcache的add,get,set,delete命令
 

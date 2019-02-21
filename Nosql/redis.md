@@ -24,15 +24,15 @@
 
 **1.Linux下安装Redis**
 
-* 安装命令：yum -y install redis
+`yum -y install redis`
 
 * 当安装完成之后，我们可以使用rpm -ql redis查看redis所有的安装目录和文件的存放位置
 
 **2.启动并登录Redis客户端**
 
-* 第一步:启动redis服务器，命令：service redis start|restart|stop
+`service redis start|restart|stop`
 
-* 第二步:redis-cli 这个命令
+`redis-cli `
 
 > service redis stop是无法杀死redis的进程的,因为是温柔的结束进程，如果希望杀死redis的进程,我们需要强制杀死redis的进程,命令为pkill redis
 

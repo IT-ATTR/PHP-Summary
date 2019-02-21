@@ -39,11 +39,11 @@ Mongodb中的数据库和Mysql中的数据库概念类似，只是无需创建�
 
 * 一个集合中可以有多个文档。
 
-### 安装mongodb
+### 安装mongodb(27017)
 
-* 第1步:输入yum -y install mongodb mongodb-server进行安装
+`yum -y install mongodb mongodb-server`
 
-* 第2步：启动mongodb，命令:service mongod start，默认占据端口27017
+`service mongod start`
 
 ### Mongodb的数据库相关命令
 
