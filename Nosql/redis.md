@@ -24,15 +24,19 @@
 
 **1.Linux下安装Redis**
 
-`yum -y install redis`
+```
+yum -y install redis
+```
 
 * 当安装完成之后，我们可以使用rpm -ql redis查看redis所有的安装目录和文件的存放位置
 
 **2.启动并登录Redis客户端**
 
-`service redis start|restart|stop`
+```
+service redis start|restart|stop
 
-`redis-cli `
+redis-cli 
+```
 
 > service redis stop是无法杀死redis的进程的,因为是温柔的结束进程，如果希望杀死redis的进程,我们需要强制杀死redis的进程,命令为pkill redis
 
@@ -60,7 +64,9 @@
 
 * 命令格式: hset 哈希表的名称 字段(key) 字段值(value)
 
-`hset userInfo:eden name eden`
+```
+hset userInfo:eden name eden
+```
 
 **2）hget命令**
 
@@ -68,7 +74,9 @@
 
 * 命令格式: hget 哈希表的名称 字段名称(key name)
 
-`hget userInfo:eden name`
+```
+hget userInfo:eden name
+```
 
 **3）hmset命令(hash multiple set)**
 
@@ -76,7 +84,9 @@
 
 * 命令格式: hmset 哈希表的名称 字段(key) 字段值(value)....
 
-`hmget userInfo:eden name eden age 24 sexy male`
+```
+hmget userInfo:eden name eden age 24 sexy male
+```
 
 **（4）hgetall命令**
 
@@ -86,7 +96,9 @@
 
 **（5）修改值name=jiangliang**
 
-`hset userinfo:eden name jiangliang`
+```
+hset userinfo:eden name jiangliang
+```
 
 #### 3.Redis的list链表数据类型
 
@@ -126,7 +138,9 @@ lpush list2 three
 
 * 例如:获取一个栈的所有数据,比如获取list1的链表中所有栈的数据
 
-`lrang list1 0 -1`
+```
+lrang list1 0 -1
+```
 
 **（4）lpop命令(与栈和队列相关)**
 
@@ -136,7 +150,9 @@ lpush list2 three
 
 * 例子1:弹出list2队列中的头部元素并且删除
 
-`lpop list2`
+```
+lpop list2
+```
 
 **(5)ltrim命令(一般用于队列操作比较多)**
 
@@ -144,7 +160,9 @@ lpush list2 three
 
 * 命令格式: ltrim 链表的名称 开始的位置 结束的位置
 
-`lpop list2 1 3`
+```
+lpop list2 1 3
+```
 
 ### Redis的Set集合数据类型(无序集合)
 
@@ -308,7 +326,9 @@ lpush list2 three
 
 > 第2步：把requirepass前的#去除,记得把requirepass进行顶格，并且修改redis的安全认证密码为123456
 
-`requirepass 123456`
+```
+requirepass 123456
+```
 
 > 第3步：如果希望redis的安全认证生效，那么需要重启redis服务器
 
@@ -334,7 +354,9 @@ lpush list2 three
 
 * 第1步:使用vim打开/etc/redis.conf文件，通过末行模式搜索/appendonly，得到以下内容：
 
-`appendonly no`
+```
+appendonly no
+```
 
 **no表示快照模式，yes表示AOF模式**
 
@@ -348,7 +370,9 @@ aooendfilename "appendonly.aof"
 
 * 第3步:开启完成后，需要重启redis服务器，如下图所示:
 
-`service redis restart`
+```
+service redis restart
+```
 
 * 第4步:重启完成后，必须去/var/lib/redis目录下去查看是否具有aof文件的生成
 

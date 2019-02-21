@@ -19,7 +19,9 @@
 ### 文档
 **文档是mongoDB中数据的基本单元，类似关系数据库的行,多个键值对有序地放置在一起便是文档。**
 
-`{ “username”:”Tom”, “age”:10 ,email:’xiaobai@sohu.com’,’sex’:男}`
+```
+{ “username”:”Tom”, “age”:10 ,email:’xiaobai@sohu.com’,’sex’:男}
+```
 
 
 ### 集合(表)
@@ -41,9 +43,11 @@ Mongodb中的数据库和Mysql中的数据库概念类似，只是无需创建�
 
 ### 安装mongodb(27017)
 
-`yum -y install mongodb mongodb-server`
+```
+yum -y install mongodb mongodb-server
 
-`service mongod start`
+service mongod start
+```
 
 ### Mongodb的数据库相关命令
 
@@ -93,7 +97,9 @@ mongo -uroot -p123456 localhost:27017/admin
 
 * 集合名称:在Mongodb中集合相当于表,这个表是无需创建,如果表不存在那么就是自动创建,如果存在就是选择.
 
-`db.class.insert({name:'eden',age:24})`;
+```
+db.class.insert({name:'eden',age:24})
+```
 
 **2.find()命令**
 
@@ -101,7 +107,9 @@ mongo -uroot -p123456 localhost:27017/admin
 
 * 查询_id小于等于7的文档,并且跳过前面3条记录,统计当前可以查询出多少个文档?
 
-`db.class.find( {_id:{'$lte':7}} ).skip(3).limit(4).count(true)`
+```
+db.class.find( {_id:{'$lte':7}} ).skip(3).limit(4).count(true)
+```
 
 **如果在mongodb中没有使用count(true),那么count无法把skip和limit看成一个条件**
 
@@ -111,7 +119,9 @@ mongo -uroot -p123456 localhost:27017/admin
 
 * 查询_id小于等于5或者name为eden的文档
 
-`db.class.find( {'$or':[{_id:{'$lte':7}},{name:'eden'}] )`
+```
+db.class.find( {'$or':[{_id:{'$lte':7}},{name:'eden'}] )
+```
 
 **4.使用$and操作符**
 
@@ -119,7 +129,9 @@ mongo -uroot -p123456 localhost:27017/admin
 
 * 例子:查询name为eden并且lesson为laravel的文档
 
-`db.class.find( {'$and':[{name:"eden"},{lesson:'laravel'}] )`
+```
+db.class.find( {'$and':[{name:"eden"},{lesson:'laravel'}] )
+```
 
 **5.把文档进行排序操作,使用sort()命令**
 
@@ -131,7 +143,9 @@ mongo -uroot -p123456 localhost:27017/admin
 
 * 例子:查找_id小于10的文档,按照_id字段降序(从大到小)排列
 
-`db.class.find( {'_id':{"$lt":10}} ).sort({_id:-1})`
+```
+db.class.find( {'_id':{"$lt":10}} ).sort({_id:-1})
+```
 
 **6.update命令和$set修改器**
 
@@ -143,7 +157,9 @@ mongo -uroot -p123456 localhost:27017/admin
 
 * 例子：修改_id<7的数据lesson为laravel
 
-`db.class.update( {"_id":{"$let":7}},{"$set":{"lesson":"laravel"}},false,true )`
+```
+db.class.update( {"_id":{"$let":7}},{"$set":{"lesson":"laravel"}},false,true )
+```
 
 **7.remove()命令**
 
@@ -153,9 +169,11 @@ mongo -uroot -p123456 localhost:27017/admin
 
 * $in操作相当于mysql中in操作语句,不过in在mongodb中是非常快速,因为$in一定可以使用上索引,语法规则如下
 
-`db.集合名称.find( {字段:{'$in':[....]}} )`
+```
+db.集合名称.find( {字段:{'$in':[....]}} )
 
-`db.class.find( {'_id':{'$in':[11,22,33,44]}} )`
+db.class.find( {'_id':{'$in':[11,22,33,44]}} )
+```
 
 ### mongodb中索引和执行计划
 
@@ -167,11 +185,15 @@ mongo -uroot -p123456 localhost:27017/admin
 
 * 为class2的name字段添加普通索引
 
-`db.class.ensureIndex( {name:1} )`
+```
+db.class.ensureIndex( {name:1} )
+```
 
 * 为class3的name字段添加唯一性索引
 
-`db.class.ensureIndex( {name:1},{unique:true} )`
+```
+db.class.ensureIndex( {name:1},{unique:true} )
+```
 
 **2.执行计划explain**
 
@@ -185,13 +207,17 @@ mongo -uroot -p123456 localhost:27017/admin
 
 * 命令的作用：用于查询一个集合当中的索引有哪些
 
-`db.class.getIndexes()`
+```
+db.class.getIndexes()
+```
 
 **2.dropIndex()命令**
 
 * 命令作用：删除集合中指定的索引，比如说删除class3中，索引名称name_1的索引
 
-`db.class.dropIndex('name_1')`
+```
+db.class.dropIndex('name_1')
+```
 
 ### mongodb的安全权限验证
 
@@ -211,17 +237,23 @@ mongo -uroot -p123456 localhost:27017/admin
 
 * 第4步：修改/etc/mongodb.conf文件
 
-`vim /etc/mongodn.conf`
+```
+vim /etc/mongodn.conf
+```
 
 > 打开后，找auth选项
 
-`auth=true`
+```
+auth=true
+```
 
 > 保存并退出（:x）,然后重启mongod服务
 
 * 第6步：如果我们继续使用mongo发觉还是可以登录,但是没有操作权限
 
-> mongo -uroot -p123456 localhost:27017/admin
+```
+ mongo -uroot -p123456 localhost:27017/admin
+```
 
 ### 修改root密码的方法
 
@@ -233,7 +265,9 @@ mongo -uroot -p123456 localhost:27017/admin
 
 **1、安装php的mongodb扩展**
 
-`yum install -y --enablerepo=remi --enablerepo=remi-php56 php-pecl-mongo`
+```
+yum install -y --enablerepo=remi --enablerepo=remi-php56 php-pecl-mongo
+```
 
 **安装完成，重启apache服务器,查看phpinfo文件**
 
