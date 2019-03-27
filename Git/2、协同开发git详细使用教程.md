@@ -54,7 +54,7 @@ git push 【git remote结果】 master
 
 #### 拉取最新代码
 ```
-git pull
+git pull --rebase
 ```
 
 #### 开发完成后
@@ -70,11 +70,13 @@ git push
 
 #### 如果push遇到错误，说明有人在你提交前更新了代码,再拉取一次
 ```
-git pull
+git pull --rebase
 ```
 ```
 git push
 ```
+
+* 一定要实用`git pull --rebase`,不然会产生节点污染
 
 
 > ### **协同开发，使用分支**
