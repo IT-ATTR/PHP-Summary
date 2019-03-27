@@ -76,7 +76,7 @@ git pull --rebase
 git push
 ```
 
-* 一定要实用`git pull --rebase`,不然会产生节点污染
+* 一定要实用 `git pull --rebase`，不然会产生节点污染
 
 
 > ### **协同开发，使用分支**
